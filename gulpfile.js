@@ -26,10 +26,14 @@ var options = {
         './views/images/*'
     ],
     html: [
-        'index.html',
+        './src/index.html',
+        './src/project-2048.html',
+        './src/project-mobile.html',
+        './src/project-webperf.html',
         './src/views/pizza.html'
     ],
-    pizzaImage: 'src/views/images/*.png'
+    pizzaImage: 'src/views/images/*.png',
+    imageOptim: 'src/views/imageOptim/'
 };
 
 gulp.task('html', function() {
@@ -43,7 +47,7 @@ gulp.task('html', function() {
         .pipe(gulp.dest(options.dist));
 });
 
-gulp.task('resize73', function() {
+gulp.task('resizeBG', function() {
     return gulp.src(options.pizzaImage)
         .pipe($.imageResize({
             width: 73.333,
@@ -52,57 +56,57 @@ gulp.task('resize73', function() {
             imageMagick: true
         }))
         .pipe($.rename({
-            suffix: '_73'
+            suffix: '_BG'
         }))
-        .pipe(gulp.dest(options.dist + '/views/images'));
+        .pipe(gulp.dest(options.imageOptim));
 });
 
 gulp.task('resizeLarge', function() {
     return gulp.src(options.pizzaImage)
         .pipe($.imageResize({
-            width: 116,
+            width: 232,
             upscale: false,
             imageMagick: true
         }))
         .pipe($.rename({
             suffix: '_Large'
         }))
-        .pipe(gulp.dest(options.dist + '/views/images'));
+        .pipe(gulp.dest(options.imageOptim));
 });
 
 gulp.task('resizeMedium', function() {
     return gulp.src(options.pizzaImage)
         .pipe($.imageResize({
-            width: 77.256,
+            width: 164.79,
             upscale: false,
             imageMagick: true
         }))
         .pipe($.rename({
             suffix: '_Medium'
         }))
-        .pipe(gulp.dest(options.dist + '/views/images'));
+        .pipe(gulp.dest(options.imageOptim));
 });
 
 gulp.task('resizeSmall', function() {
     return gulp.src(options.pizzaImage)
         .pipe($.imageResize({
-            width: 58,
+            width: 116.25,
             upscale: false,
             imageMagick: true
         }))
         .pipe($.rename({
             suffix: '_Small'
         }))
-        .pipe(gulp.dest(options.dist + '/views/images'));
+        .pipe(gulp.dest(options.imageOptim));
 });
 
 /* After images resized need to be optimized or compressed using an algorithm that decides
 * what data to keep and what it can throw away while still maintaining visual integrity.
 * Plus need to get rid of extra metadata added during imageResize.
 */
-gulp.task('optimize', ['resize73', 'resizeLarge', 'resizeMedium', 'resizeSmall'], function() {
+gulp.task('optimize', ['resizeBG', 'resizeLarge', 'resizeMedium', 'resizeSmall'], function() {
     return gulp.src(options.pizzaImage, {
-            base: './src'
+            base: './src/views/images'
         })
         .pipe($.imagemin({
             use: [imageminJpegRecompress({
@@ -112,7 +116,7 @@ gulp.task('optimize', ['resize73', 'resizeLarge', 'resizeMedium', 'resizeSmall']
                 quality: 'high'
             })]
         }))
-        .pipe(gulp.dest(options.dist));
+        .pipe(gulp.dest(options.imageOptim));
 });
 
 gulp.task('minifyCSS', function() {
@@ -127,7 +131,9 @@ gulp.task('minifyCSS', function() {
 });
 
 gulp.task('html', ['optimize'], function() {
-    return gulp.src(options.html)
+    return gulp.src(options.html, {
+            base: './src'
+        })
         .pipe($.useref())
         .pipe($.if('*.js', $.cached('linting')))
         .pipe($.if('*.js', $.jshint()))
@@ -138,15 +144,19 @@ gulp.task('html', ['optimize'], function() {
 });
 
 gulp.task('clean', function() {
-    del([options.dist]);
+    del([options.dist, options.imageOptim]);
+
+      del(['dist', 'img', 'css/main.min.css']);
+
 });
 
-gulp.task('build', ['html'], function() {
+gulp.task('build', ['html', 'optimize'], function() {
     return gulp.src([
             // "js/modernizr-custom.js",
             // "js/picturefill.min.js",
             '../index.html',
-            options.views + 'pizza.html'
+            options.views + 'pizza.html',
+            options.imageOptim +'*.png',
         ], {
             base: './src'
         })

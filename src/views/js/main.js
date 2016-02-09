@@ -410,7 +410,7 @@ var pizzaElementGenerator = function(i) {
     pizzaImageContainer.classList.add("col-md-6");
 
     // style change
-    pizzaImage.src = "images/pizza.png";
+    pizzaImage.src = "imageOptim/pizza_Medium.png";
     pizzaImage.classList.add("img-responsive");
     pizzaImageContainer.appendChild(pizzaImage);
     pizzaContainer.appendChild(pizzaImageContainer);
@@ -458,24 +458,31 @@ var resizePizzas = function(size) {
     // Iterates through pizza elements on the page and
     // changes their widths
     function changePizzaSizes(size) {
+      var newImage;
         switch (size) {
             case "1":
-                newWidth = 25;
+                // newWidth = 25;
+                newImage = 'imageOptim/pizza_Small.png';
                 break;
             case "2":
-                newWidth = 33.3;
+                // newWidth = 33.3;
+                newImage = 'imageOptim/pizza_Medium.png';
                 break;
             case "3":
-                newWidth = 50;
+                newImage = 'imageOptim/pizza_Large.png';
                 break;
             default:
                 console.log("bug in sizeSwitcher");
         }
 
-        var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
-        var randomPizzasLength = randomPizzas.length;
-        for (var i = 0; i < randomPizzasLength; i++) {
-            randomPizzas[i].style.width = newWidth + "%";
+        // var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
+        var randomPizzaImages = document.querySelectorAll(".img-responsive");
+        var randomPizzaImagesLength = randomPizzaImages.length;
+
+        // var randomPizzasLength = randomPizzas.length;
+        // var pizzaImageChange = document.createElement("img");
+        for (var i = 0; i < randomPizzaImagesLength; i++) {
+            randomPizzaImages[i].src = newImage;
         }
     }
 
@@ -492,7 +499,6 @@ window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
 for (var i = 2; i < 100; i++) {
-    // is this layout??
     var pizzasDiv = document.getElementById("randomPizzas");
     // pizzaElementGenerator is all style
     pizzasDiv.appendChild(pizzaElementGenerator(i));
@@ -575,7 +581,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var elem = document.createElement('img');
         elem.className = 'mover';
         // style
-        elem.src = "images/pizza_73.png";
+        elem.src = 'imageOptim/pizza_BG.png';
         // style
         elem.style.height = "100px";
         // style
