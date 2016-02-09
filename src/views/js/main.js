@@ -461,28 +461,30 @@ var resizePizzas = function(size) {
       var newImage;
         switch (size) {
             case "1":
-                // newWidth = 25;
+                newWidth = 25;
                 newImage = 'imageOptim/pizza_Small.png';
                 break;
             case "2":
-                // newWidth = 33.3;
+                newWidth = 33.3;
                 newImage = 'imageOptim/pizza_Medium.png';
                 break;
             case "3":
+                newWidth = 50;
                 newImage = 'imageOptim/pizza_Large.png';
                 break;
             default:
                 console.log("bug in sizeSwitcher");
         }
 
-        // var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
+        var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
         var randomPizzaImages = document.querySelectorAll(".img-responsive");
         var randomPizzaImagesLength = randomPizzaImages.length;
 
-        // var randomPizzasLength = randomPizzas.length;
+        var randomPizzasLength = randomPizzas.length;
         // var pizzaImageChange = document.createElement("img");
-        for (var i = 0; i < randomPizzaImagesLength; i++) {
+        for (var i = 0; i < randomPizzasLength; i++) {
             randomPizzaImages[i].src = newImage;
+            randomPizzas[i].style.width = newWidth + '%';
         }
     }
 
