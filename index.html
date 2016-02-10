@@ -8,7 +8,6 @@
     <meta name="author" content=" FILL ME IN ">
     <title>Cameron Pittman: Portfolio</title>
     
-
 </head>
 
 <body style="background: #fff; color: #333; font-family: 'Trebuchet MS', Helvetica, sans-serif; font-size: 14px; font-weight: 400; line-height: 1.61; margin: 0;">
@@ -46,26 +45,24 @@
                 </li>
             </ul>
         </div>
-            <footer style="border-top: 1px solid #ccc; margin: 0 auto; max-width: 45em; padding: 0 0.5em;">
+        <footer style="border-top: 1px solid #ccc; margin: 0 auto; max-width: 45em; padding: 0 0.5em;">
             <p>&copy; Web Performance 2014 <span id="crp-stats" style="float: right; font-style: italic;"></span></p>
         </footer>
     </div>
+    <script src="js/perfmatters-min.js"></script>
+    <script type="text/javascript" async src="http://www.google-analytics.com/analytics.js"></script>
+    <script async>
+    (function(w, g) {
+        w['GoogleAnalyticsObject'] = g;
+        w[g] = w[g] || function() {
+            (w[g].q = w[g].q || []).push(arguments)
+        };
+        w[g].l = 1 * new Date();
+    })(window, 'ga');
 
-        <script src="js/perfmatters-min.js"></script>
-        <script type="text/javascript" async src="http://www.google-analytics.com/analytics.js"></script>
-        <script async>
-        (function(w, g) {
-            w['GoogleAnalyticsObject'] = g;
-            w[g] = w[g] || function() {
-                (w[g].q = w[g].q || []).push(arguments)
-            };
-            w[g].l = 1 * new Date();
-        })(window, 'ga');
-
-        // TODO: replace with your Google Analytics profile ID.
-        ga('create', 'UA-XXXX-Y');
-        ga('send', 'pageview');
-        </script>
+    ga('create', 'UA-XXXX-Y');
+    ga('send', 'pageview');
+    </script>
 </body>
 
 </html>
