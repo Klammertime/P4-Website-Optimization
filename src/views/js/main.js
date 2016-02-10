@@ -479,9 +479,7 @@ var resizePizzas = function(size) {
         var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
         var randomPizzaImages = document.querySelectorAll(".img-responsive");
         var randomPizzaImagesLength = randomPizzaImages.length;
-
         var randomPizzasLength = randomPizzas.length;
-        // var pizzaImageChange = document.createElement("img");
         for (var i = 0; i < randomPizzasLength; i++) {
             randomPizzaImages[i].src = newImage;
             randomPizzas[i].style.width = newWidth + '%';
@@ -534,7 +532,6 @@ var ticking,
     lastScrollTop;
 
 function onScroll() {
-    lastScrollTop = document.body.scrollTop;
     requestTick();
 }
 
@@ -559,30 +556,29 @@ function updatePositions() {
 
     movers = document.querySelectorAll('.mover');
     moversLength = movers.length;
-    docScrollTopValue = lastScrollTop / 1250;
+    docScrollTopValue = document.body.scrollTop / 1250;
 
-    for (j = 0; j < moversLength; j++) {
+    for (var j = 0; j < moversLength; j++) {
         phase = Math.sin(docScrollTopValue + (j % 5));
         mover = movers[j];
         moverLeft[j] = mover.basicLeft + 100 * phase + 'px';
     }
 
-    for (k = 0; k < moversLength; k++) {
+    for (var k = 0; k < moversLength; k++) {
         mover = movers[k];
         mover.style.left = moverLeft[k];
     }
-    lastMoverLeft = moverLeft.slice();
-    ticking = false;
 
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
   window.performance.mark("mark_end_frame");
   window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
-  if (frame % 10 === 0) {
-    var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
-    logAverageFrame(timesToUpdatePosition);
-}
+    if (frame % 10 === 0) {
+        var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
+        logAverageFrame(timesToUpdatePosition);
+    }
+    ticking = false;
 }
 
 // runs updatePositions on scroll

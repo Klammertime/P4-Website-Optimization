@@ -5,7 +5,6 @@ var imageminPngquant = require('imagemin-pngquant');
 var pngquant = require('imagemin-pngquant');
 var imageminOptipng = require('imagemin-optipng');
 var imageminJpegRecompress = require('imagemin-jpeg-recompress');
-    // pages = require('gulp-gh-pages'); TODO: Figure out if its ghPages
 
 var $ = require('gulp-load-plugins')({
     lazy: true
@@ -143,32 +142,18 @@ gulp.task('optimize', function() {
         .pipe(gulp.dest('dist/img/'));
 });
 
-// gulp.task('unCSSPizza', function() {
-//     gulp.src('./src/views/css/style.css')
-//         .pipe($.uncss({
-//             html: './src/views/pizza.html'
-//         }))
-//         .pipe(gulp.dest('./src/views/css'));
-// });
-
-gulp.task('unCSS', function() {
-    gulp.src('./src/css/style.css')
-        .pipe($.uncss({
-            html: options.html
-        }))
-        .pipe(gulp.dest('./src/css'));
-});
-
-gulp.task('html', ['optimize'], function() {
+gulp.task('inline', ['optimize'], function() {
     return gulp.src('./src/*.html', {
             base: './src'
         })
+        .pipe($.inlineCss({
+            applyStyleTags: true
+        }))
         .pipe($.useref())
         .pipe($.if('*.js', $.cached('linting')))
         .pipe($.if('*.js', $.jshint()))
         .pipe($.if('*.js', $.jshint.reporter()))
         .pipe($.if('*.js', $.uglify()))
-        .pipe($.if('*.css', $.minifyCss()))
         .pipe(gulp.dest(options.dist));
 });
 
@@ -187,10 +172,8 @@ gulp.task('clean', function() {
     del([options.dist, options.imageOptim]);
 });
 
-gulp.task('build', ['html', 'htmlPizza'], function() {
+gulp.task('build', ['htmlPizza', 'inline'], function() {
     return gulp.src([
-            // "js/modernizr-custom.js",
-            // "js/picturefill.min.js"
         ], {
             base: './src'
         })
