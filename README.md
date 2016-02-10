@@ -1,3 +1,5 @@
+## View the optimized site here: http://klammertime.github.io/frontend-nanodegree-mobile-portfolio/
+
 ## Note to world: this site was not created by me (if you look at "Cam's Pizzeria" you'll understand why I feel this is so important to make clear :)
 
 ## Website Performance Optimization portfolio project

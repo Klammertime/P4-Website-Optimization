@@ -1,7 +1,9 @@
 'use strict';
 var gulp = require('gulp');
 var del = require('del');
+var imageminPngquant = require('imagemin-pngquant');
 var pngquant = require('imagemin-pngquant');
+var imageminOptipng = require('imagemin-optipng');
 var imageminJpegRecompress = require('imagemin-jpeg-recompress');
     // pages = require('gulp-gh-pages'); TODO: Figure out if its ghPages
 
@@ -30,21 +32,22 @@ var options = {
         './src/project-2048.html',
         './src/project-mobile.html',
         './src/project-webperf.html',
-        './src/views/pizza.html'
     ],
     pizzaImage: 'src/views/images/*.png',
     imageOptim: 'src/views/imageOptim/'
 };
 
-gulp.task('html', function() {
-    return gulp.src(options.html)
-        .pipe($.useref())
-        .pipe($.if('*.js', $.cached('linting')))
-        .pipe($.if('*.js', $.jshint()))
-        .pipe($.if('*.js', $.jshint.reporter()))
-        .pipe($.if('*.js', $.uglify()))
-        .pipe($.if('*.css', $.minifyCss()))
-        .pipe(gulp.dest(options.dist));
+gulp.task('resize100', function() {
+    return gulp.src(options.views + 'images/pizzeria.jpg')
+        .pipe($.imageResize({
+            width: 100,
+            upscale: false,
+            imageMagick: true
+        }))
+        .pipe($.rename({
+            suffix: '_100'
+        }))
+        .pipe(gulp.dest(options.imageOptim));
 });
 
 gulp.task('resizeBG', function() {
@@ -104,34 +107,60 @@ gulp.task('resizeSmall', function() {
 * what data to keep and what it can throw away while still maintaining visual integrity.
 * Plus need to get rid of extra metadata added during imageResize.
 */
-gulp.task('optimize', ['resizeBG', 'resizeLarge', 'resizeMedium', 'resizeSmall'], function() {
-    return gulp.src(options.pizzaImage, {
-            base: './src/views/images'
-        })
-        .pipe($.imagemin({
-            use: [imageminJpegRecompress({
-                loops: 4,
-                min: 60,
-                max: 95,
-                quality: 'high'
-            })]
-        }))
-        .pipe(gulp.dest(options.imageOptim));
+gulp.task('optimizePizza', ['resize100', 'resizeBG', 'resizeLarge', 'resizeMedium', 'resizeSmall'], function() {
+    return gulp.src('src/views/**/*')
+         .pipe($.if('*.jpg', $.imagemin({
+              use:[imageminJpegRecompress({
+                loops:3,
+                min: 70,
+                max: 90,
+                quality:'high'
+              })]
+            })))
+        .pipe($.if('*.png', $.imagemin({
+              use:[imageminOptipng({
+                optimizationLevel: 3
+              })]
+            })))
+        .pipe(gulp.dest('dist/views'));
 });
 
-gulp.task('minifyCSS', function() {
-    gulp.src(options.allCss, {
-            base: './src'
-        })
-        .pipe($.cssmin())
-        .pipe($.rename({
-            suffix: '.min'
+gulp.task('optimize', function() {
+    return gulp.src('src/img/*.*')
+        .pipe($.if('*.jpg', $.imagemin({
+              use:[imageminJpegRecompress({
+                loops:3,
+                min: 70,
+                max: 90,
+                quality:'high'
+              })]
+            })))
+        .pipe($.if('*.png', $.imagemin({
+              use:[imageminOptipng({
+                optimizationLevel: 3
+              })]
+            })))
+        .pipe(gulp.dest('dist/img/'));
+});
+
+// gulp.task('unCSSPizza', function() {
+//     gulp.src('./src/views/css/style.css')
+//         .pipe($.uncss({
+//             html: './src/views/pizza.html'
+//         }))
+//         .pipe(gulp.dest('./src/views/css'));
+// });
+
+gulp.task('unCSS', function() {
+    gulp.src('./src/css/style.css')
+        .pipe($.uncss({
+            html: options.html
         }))
-        .pipe(gulp.dest(options.dist));
+        .pipe(gulp.dest('./src/css'));
 });
 
 gulp.task('html', ['optimize'], function() {
-    return gulp.src(options.html, {
+    return gulp.src('./src/*.html', {
             base: './src'
         })
         .pipe($.useref())
@@ -143,20 +172,25 @@ gulp.task('html', ['optimize'], function() {
         .pipe(gulp.dest(options.dist));
 });
 
-gulp.task('clean', function() {
-    del([options.dist, options.imageOptim]);
-
-      del(['dist', 'img', 'css/main.min.css']);
-
+gulp.task('htmlPizza', ['optimizePizza'], function() {
+    return gulp.src(options.views + 'pizza.html')
+        .pipe($.useref())
+        .pipe($.if('*.js', $.cached('linting')))
+        .pipe($.if('*.js', $.jshint()))
+        .pipe($.if('*.js', $.jshint.reporter()))
+        .pipe($.if('*.js', $.uglify()))
+        .pipe($.if('*.css', $.minifyCss()))
+        .pipe(gulp.dest(options.dist + '/views'));
 });
 
-gulp.task('build', ['html', 'optimize'], function() {
+gulp.task('clean', function() {
+    del([options.dist, options.imageOptim]);
+});
+
+gulp.task('build', ['html', 'htmlPizza'], function() {
     return gulp.src([
             // "js/modernizr-custom.js",
-            // "js/picturefill.min.js",
-            '../index.html',
-            options.views + 'pizza.html',
-            options.imageOptim +'*.png',
+            // "js/picturefill.min.js"
         ], {
             base: './src'
         })
@@ -164,7 +198,7 @@ gulp.task('build', ['html', 'optimize'], function() {
 });
 
 gulp.task('deploy', function() {
-        return gulp.src(options.dist + '**/*')
+        return gulp.src(options.dist + '/**/*')
             .pipe($.ghPages());
     })
 

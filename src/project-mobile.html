@@ -7,32 +7,21 @@
     <meta name="description" content=" FILL ME IN ">
     <meta name="author" content=" FILL ME IN ">
     <title>Cameron Pitman: Portfolio</title>
+    <!-- build:css css/style.min.css -->
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <!-- endbuild -->
+    <!-- build:css css/print.min.css -->
+    <link href="css/print.css" type="text/css" rel="stylesheet" media="print">
+    <!-- endbuild -->
     <!-- Hmm, what is the impact of web fonts on speed? Measure it... -->
     <!-- <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/print.css" rel="stylesheet">
-    <script>
-    (function(w, g) {
-        w['GoogleAnalyticsObject'] = g;
-        w[g] = w[g] || function() {
-            (w[g].q = w[g].q || []).push(arguments)
-        };
-        w[g].l = 1 * new Date();
-    })(window, 'ga');
-
-    // TODO: replace with your Google Analytics profile ID.
-    ga('create', 'UA-XXXX-Y');
-    ga('send', 'pageview');
-    </script>
-    <script src="http://www.google-analytics.com/analytics.js"></script>
-    <script async src="js/perfmatters.js"></script>
 </head>
 
 <body>
     <header>
         <a href="/"><img src="img/profilepic.jpg"></a>
-        <p>Cameron Pittman
-            <br><span>Course Developer</span></p>
+        <p class="name">Cameron Pittman
+            <br><span class="job-title">Course Developer</span></p>
     </header>
     <div class="container">
         <div class="hero">
@@ -46,6 +35,23 @@
         <footer>
             <p>&copy; Web Performance 2014 <span id="crp-stats"></span></p>
         </footer>
+        <!-- build:js js/perfmatters-test.js -->
+        <script type="text/javascript" async src="js/perfmatters.js"></script>
+        <!-- endbuild -->
+        <script type="text/javascript" async src="http://www.google-analytics.com/analytics.js"></script>
+        <script>
+        (function(w, g) {
+            w['GoogleAnalyticsObject'] = g;
+            w[g] = w[g] || function() {
+                (w[g].q = w[g].q || []).push(arguments)
+            };
+            w[g].l = 1 * new Date();
+        })(window, 'ga');
+
+        // TODO: replace with your Google Analytics profile ID.
+        ga('create', 'UA-XXXX-Y');
+        ga('send', 'pageview');
+        </script>
 </body>
 
 </html>
