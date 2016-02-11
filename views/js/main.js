@@ -588,7 +588,7 @@ window.addEventListener('scroll', onScroll, false);
 document.addEventListener('DOMContentLoaded', function() {
     var cols = 8;
     var s = 256;
-    for (var i = 0; i < 25; i++) { //changed 200 to 30
+    for (var i = 0; i < 18; i++) { //changed 200 to 30
         var elem = document.createElement('img');
         elem.className = 'mover';
         // style

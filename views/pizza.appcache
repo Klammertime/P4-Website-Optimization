@@ -1,0 +1,17 @@
+CACHE MANIFEST
+# version 1.0
+CACHE:
+./js/main-pizza.js
+./css/style.min.css
+./imageOptim/pizza_BG.png
+./imageOptim/pizza_Large.png
+./imageOptim/pizza_Medium.png
+./imageOptim/pizza_Small.png
+./imageOptim/pizza_100.png
+./imageOptim/pizza_270.png
+./imageOptim/pizza_720.png
+
+
+NETWORK:
+
+FALLBACK:
