@@ -1,0 +1,21 @@
+CACHE MANIFEST
+# version 1.2
+CACHE:
+./js/perfmatters-min.js
+./img/2048.png
+./img/cam_be_like.jpg
+./img/image1.jpg
+./img/image2.jpg
+./img/image3.jpg
+./img/image4.jpg
+./img/mobilewebdev.jpg
+./img/profilepic.jpg
+./project-2048.html
+./project-mobile.html
+./project-webperf.html
+
+
+
+NETWORK:
+
+FALLBACK:
