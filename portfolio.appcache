@@ -10,6 +10,7 @@ CACHE:
 ./img/image4.jpg
 ./img/mobilewebdev.jpg
 ./img/profilepic.jpg
+./views/imageOptim/pizzeria_100.jpg
 ./index.html
 ./project-2048.html
 ./project-mobile.html
