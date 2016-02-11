@@ -49,6 +49,34 @@ gulp.task('resize100', function() {
         .pipe(gulp.dest(options.imageOptim));
 });
 
+gulp.task('resize720', function() {
+    return gulp.src(options.views + 'images/pizzeria.jpg')
+        .pipe($.imageResize({
+            width: 720,
+            height: 540,
+            upscale: false,
+            imageMagick: true
+        }))
+        .pipe($.rename({
+            suffix: '_720'
+        }))
+        .pipe(gulp.dest(options.imageOptim));
+});
+
+gulp.task('resize360', function() {
+    return gulp.src(options.views + 'images/pizzeria.jpg')
+        .pipe($.imageResize({
+            width: 360,
+            height: 270,
+            upscale: false,
+            imageMagick: true
+        }))
+        .pipe($.rename({
+            suffix: '_270'
+        }))
+        .pipe(gulp.dest(options.imageOptim));
+});
+
 gulp.task('resizeBG', function() {
     return gulp.src(options.pizzaImage)
         .pipe($.imageResize({
@@ -106,22 +134,22 @@ gulp.task('resizeSmall', function() {
 * what data to keep and what it can throw away while still maintaining visual integrity.
 * Plus need to get rid of extra metadata added during imageResize.
 */
-gulp.task('optimizePizza', ['resize100', 'resizeBG', 'resizeLarge', 'resizeMedium', 'resizeSmall'], function() {
-    return gulp.src('src/views/**/*')
+gulp.task('optimizePizza', ['resize100', 'resizeBG', 'resizeLarge', 'resizeMedium', 'resizeSmall', 'resize360', 'resize720'], function() {
+    return gulp.src('src/views/imageOptim/*.*')
          .pipe($.if('*.jpg', $.imagemin({
               use:[imageminJpegRecompress({
-                loops:3,
-                min: 70,
+                loops:4,
+                min: 40,
                 max: 90,
-                quality:'high'
+                quality:'medium'
               })]
             })))
         .pipe($.if('*.png', $.imagemin({
               use:[imageminOptipng({
-                optimizationLevel: 3
+                optimizationLevel: 7
               })]
             })))
-        .pipe(gulp.dest('dist/views'));
+        .pipe(gulp.dest('dist/views/imageOptim/'));
 });
 
 gulp.task('optimize', function() {
@@ -143,28 +171,26 @@ gulp.task('optimize', function() {
 });
 
 gulp.task('inline', ['optimize'], function() {
-    return gulp.src('./src/*.html', {
-            base: './src'
-        })
+    return gulp.src(options.html)
         .pipe($.inlineCss({
             applyStyleTags: true
         }))
-        .pipe($.useref())
-        .pipe($.if('*.js', $.cached('linting')))
-        .pipe($.if('*.js', $.jshint()))
-        .pipe($.if('*.js', $.jshint.reporter()))
+        .pipe($.useref({
+            base: './src'
+        }))
         .pipe($.if('*.js', $.uglify()))
+        .pipe($.htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest(options.dist));
 });
 
 gulp.task('htmlPizza', ['optimizePizza'], function() {
     return gulp.src(options.views + 'pizza.html')
-        .pipe($.useref())
-        .pipe($.if('*.js', $.cached('linting')))
-        .pipe($.if('*.js', $.jshint()))
-        .pipe($.if('*.js', $.jshint.reporter()))
+        .pipe($.useref({
+            base: './src/views'
+        }))
         .pipe($.if('*.js', $.uglify()))
         .pipe($.if('*.css', $.minifyCss()))
+        .pipe($.htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest(options.dist + '/views'));
 });
 
@@ -174,6 +200,7 @@ gulp.task('clean', function() {
 
 gulp.task('build', ['htmlPizza', 'inline'], function() {
     return gulp.src([
+        './src/views/pizza.appcache'
         ], {
             base: './src'
         })

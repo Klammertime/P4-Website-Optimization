@@ -1,0 +1,17 @@
+CACHE MANIFEST
+# version 1.4
+CACHE:
+./js/main.js
+./css/combined.css
+./imageOptim/pizza_BG.png
+./imageOptim/pizza_Large.png
+./imageOptim/pizza_Medium.png
+./imageOptim/pizza_Small.png
+./imageOptim/pizzeria_100.jpg
+./imageOptim/pizzeria_270.jpg
+./imageOptim/pizzeria_720.jpg
+
+
+NETWORK:
+
+FALLBACK:
