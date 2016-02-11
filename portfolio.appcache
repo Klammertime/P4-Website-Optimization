@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# version 1.1
+# version 1.2
 CACHE:
 ./js/perfmatters-min.js
 ./img/2048.png
@@ -10,7 +10,6 @@ CACHE:
 ./img/image4.jpg
 ./img/mobilewebdev.jpg
 ./img/profilepic.jpg
-./index.html
 ./project-2048.html
 ./project-mobile.html
 ./project-webperf.html
