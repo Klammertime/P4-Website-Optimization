@@ -7,9 +7,9 @@ CACHE:
 ./imageOptim/pizza_Large.png
 ./imageOptim/pizza_Medium.png
 ./imageOptim/pizza_Small.png
-./imageOptim/pizza_100.jpg
-./imageOptim/pizza_270.jpg
-./imageOptim/pizza_720.jpg
+./imageOptim/pizzeria_100.jpg
+./imageOptim/pizzeria_270.jpg
+./imageOptim/pizzeria_720.jpg
 
 
 NETWORK:
