@@ -1,8 +1,8 @@
 CACHE MANIFEST
-# version 1.1
+# version 1.4
 CACHE:
-./js/main-pizza.js
-./css/style.min.css
+./js/main.js
+./css/combined.css
 ./imageOptim/pizza_BG.png
 ./imageOptim/pizza_Large.png
 ./imageOptim/pizza_Medium.png
