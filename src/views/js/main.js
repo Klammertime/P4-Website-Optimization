@@ -400,7 +400,6 @@ var pizzaElementGenerator = function(i) {
     pizzaDescriptionContainer = document.createElement("div");
 
     pizzaContainer.classList.add("randomPizzaContainer");
-    // style change width and height
     pizzaContainer.style.width = "33.33%";
     pizzaContainer.style.height = "325px";
     // gives each pizza element a unique id
@@ -439,7 +438,6 @@ var resizePizzas = function(size) {
         var pizzaSizeEl = document.querySelector("#pizzaSize");
         switch (size) {
             case "1":
-                // style change
                 pizzaSizeEl.innerHTML = "Small";
                 return;
             case "2":
@@ -528,17 +526,17 @@ function logAverageFrame(times) { // times is the array of User Timing measureme
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
-var ticking,
+var currentlyAnimating,
     lastScrollTop;
 
 function onScroll() {
-    requestTick();
+    requestAnimate();
 }
 
-function requestTick() {
-    if (!ticking) {
+function requestAnimate() {
+    if (!currentlyAnimating) {
         requestAnimationFrame(updatePositions);
-        ticking = true;
+        currentlyAnimating = true;
     }
 }
 
@@ -569,7 +567,6 @@ function updatePositions() {
         mover.style.left = moverLeft[k];
     }
 
-
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
   window.performance.mark("mark_end_frame");
@@ -578,8 +575,13 @@ function updatePositions() {
         var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
         logAverageFrame(timesToUpdatePosition);
     }
-    ticking = false;
+    currentlyAnimating = false;
 }
+
+var inputEl = document.getElementById('sizeSlider');
+inputEl.addEventListener('change', function(event){
+    resizePizzas(this.value);
+});
 
 // runs updatePositions on scroll
 window.addEventListener('scroll', onScroll, false);
@@ -591,12 +593,11 @@ document.addEventListener('DOMContentLoaded', function() {
     for (var i = 0; i < 18; i++) { //changed 200 to 30
         var elem = document.createElement('img');
         elem.className = 'mover';
-        // style
         elem.src = 'imageOptim/pizza_BG.png';
-        // style
         elem.style.height = "100px";
-        // style
         elem.style.width = "73.333px";
+        elem.width = 73.333;
+        elem.height = 100;
         elem.basicLeft = (i % cols) * s;
         elem.style.top = (Math.floor(i / cols) * s) + 'px';
         document.querySelector("#movingPizzas1").appendChild(elem);
