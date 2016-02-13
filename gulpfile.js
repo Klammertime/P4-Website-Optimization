@@ -192,12 +192,14 @@ gulp.task('inline', ['optimize'], function() {
         .pipe(gulp.dest(options.dist));
 });
 
+
 gulp.task('htmlPizza', ['optimizePizza'], function() {
     return gulp.src(options.views + 'pizza.html')
         .pipe($.useref({
             base: './src/views'
         }))
         .pipe($.if('*.js', $.uglify()))
+        // .pipe($.if('*.css', $.autoprefixer()))
         .pipe($.if('*.css', $.minifyCss()))
         .pipe($.htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest(options.dist + '/views'));

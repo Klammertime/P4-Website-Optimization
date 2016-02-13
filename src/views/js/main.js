@@ -20,11 +20,6 @@ cameron *at* udacity *dot* com
 
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
-var newwidth,
-    pizzasCollection,
-    basicLeftArray,
-    docScrollTop,
-    lastScrollY = 0;
 
 var pizzaIngredients = {};
 pizzaIngredients.meats = [
@@ -531,8 +526,7 @@ function logAverageFrame(times) { // times is the array of User Timing measureme
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
-var currentlyAnimating,
-    lastScrollTop;
+var currentlyAnimating;
 
 function onScroll() {
     requestAnimate();
@@ -554,9 +548,9 @@ function updatePositions() {
         movers,
         moversLength,
         docScrollTopValue,
-        phase,
-        lastMoverLeft;
-/* changed querySelectorAll to getElementsByClassName */
+        phase;
+
+        /* changed querySelectorAll to getElementsByClassName */
     movers = document.getElementsByClassName('mover');
     moversLength = movers.length;
     docScrollTopValue = document.body.scrollTop / 1250;

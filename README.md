@@ -18,17 +18,15 @@ Build
 1. Download and install npm by way of installing node.js (it comes packaged with it): [node.js](https://nodejs.org/en/) 
 2. While in the root project directory, run: 
   
-  ```
-  npm install
-
-  ```
+```
+npm install
+```
 
 3. To build the dist folder, from the root project directory run the following:
 
-    ```
-    gulp
-
-    ```
+```
+gulp
+```
 
 Structure
 ---------
@@ -107,14 +105,14 @@ Optimizations
 #### src/views/js/main.js
 * minify js
 * replace html event handler attribue with event listener
-* use requestAnimationFrame(updatePositions) per instructed here: [html5rocks](http://www.html5rocks.com/en/tutorials/speed/animations/
+* use requestAnimationFrame(updatePositions) as instructed here: [html5rocks](http://www.html5rocks.com/en/tutorials/speed/animations/)
 * to change pizza sizes, replace the the pizza images instead of changing their widths. Batch style changes of new image and div width change
 * changed all usage of querySelector and querySelectorAll to either getElementsByClassName or getElementById if possible since these are live node lists and faster.
 * declared the pizzasDiv variable outside of loop so the function only makes one DOM call: var pizzasDiv = document.getElementById("randomPizzas");
 * moved DOM call, movingPizzas, outside the for statement and
 saved it into a local variable 
 var movingPizzas = document.getElementById("movingPizzas1");
-* Added 'use strict';
+* [Invoked strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) by adding 'use strict'; at the top of the file.
 * reduce background pizzas from 199 to 24 since most you do not see
 
 #### src/views/css/style.css
@@ -132,5 +130,8 @@ var movingPizzas = document.getElementById("movingPizzas1");
       backface-visibility: hidden;
   }
   ```
-
+[Hardware accelerated CSS](http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css)
+[Backface visibility css animation](http://designmodo.com/backface-visibility-css-animation/)
+[Backface visibility](https://css-tricks.com/almanac/properties/b/backface-visibility/)
+[CSS transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
 
