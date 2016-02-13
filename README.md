@@ -131,11 +131,27 @@ var movingPizzas = document.getElementById("movingPizzas1");
   }
   ```
 **Further Reading**
-[Hardware accelerated CSS](http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css)
 
-[Backface visibility css animation](http://designmodo.com/backface-visibility-css-animation/)
+[http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css](http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css)
 
-[Backface visibility](https://css-tricks.com/almanac/properties/b/backface-visibility/)
+[http://designmodo.com/backface-visibility-css-animation/](http://designmodo.com/backface-visibility-css-animation/)
 
-[CSS transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
+[https://css-tricks.com/almanac/properties/b/backface-visibility/](https://css-tricks.com/almanac/properties/b/backface-visibility/)
 
+[https://developer.mozilla.org/en-US/docs/Web/CSS/transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
+
+[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management)
+
+[https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/](https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/)
+
+[http://www.html5rocks.com/en/tutorials/workers/basics/](http://www.html5rocks.com/en/tutorials/workers/basics/)
+
+[https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
+
+[https://en.bem.info/method/key-concepts/](https://en.bem.info/method/key-concepts/)
+
+[http://www.sitepoint.com/bem-smacss-advice-from-developers/](http://www.sitepoint.com/bem-smacss-advice-from-developers/)
+
+[http://gent.ilcore.com/2011/03/how-not-to-trigger-layout-in-webkit.html](http://gent.ilcore.com/2011/03/how-not-to-trigger-layout-in-webkit.html)
+
+[http://csstriggers.com/](http://csstriggers.com/)
