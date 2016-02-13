@@ -118,7 +118,7 @@ var movingPizzas = document.getElementById("movingPizzas1");
 #### src/views/css/style.css
 * concatenate style.css & bootstrap-grid.css into combined.css
 * minify combined.css
-* .mover class: Took advantage of hardware accelerated CSS using 'backface-visibility: hidden' to increase site performance and triggered GPU using 'transform: translateZ(0)'. Added will-change: transform.
+* Took advantage of hardware accelerated CSS using 'backface-visibility: hidden' to increase site performance and triggered GPU using 'transform: translateZ(0)'. Added 'will-change: transform'.
   
   ```
   .mover {
@@ -130,6 +130,8 @@ var movingPizzas = document.getElementById("movingPizzas1");
       backface-visibility: hidden;
   }
   ```
+
+  
 ### Resources
 
 [http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css](http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css)
