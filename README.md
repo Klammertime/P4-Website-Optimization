@@ -130,8 +130,12 @@ var movingPizzas = document.getElementById("movingPizzas1");
       backface-visibility: hidden;
   }
   ```
+**Further Reading**
 [Hardware accelerated CSS](http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css)
+
 [Backface visibility css animation](http://designmodo.com/backface-visibility-css-animation/)
+
 [Backface visibility](https://css-tricks.com/almanac/properties/b/backface-visibility/)
+
 [CSS transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
 
