@@ -15,6 +15,8 @@ Creator:
 Cameron Pittman, Udacity Course Developer
 cameron *at* udacity *dot* com
 */
+// Added 'use strict';
+'use strict';
 
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
@@ -434,8 +436,9 @@ var resizePizzas = function(size) {
 
     // Changes the value for the size of the pizza above the slider
     function changeSliderLabel(size) {
-
-        var pizzaSizeEl = document.querySelector("#pizzaSize");
+        // changed document.querySelector("#pizzaSize"); to
+        // getElementById
+        var pizzaSizeEl = document.getElementById("pizzaSize");
         switch (size) {
             case "1":
                 pizzaSizeEl.innerHTML = "Small";
@@ -456,7 +459,8 @@ var resizePizzas = function(size) {
     // Iterates through pizza elements on the page and
     // changes their widths
     function changePizzaSizes(size) {
-      var newImage;
+        var newImage,
+            newWidth;
         switch (size) {
             case "1":
                 newWidth = 25;
@@ -473,9 +477,9 @@ var resizePizzas = function(size) {
             default:
                 console.log("bug in sizeSwitcher");
         }
-
-        var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
-        var randomPizzaImages = document.querySelectorAll(".img-responsive");
+        // changed querySelectorAll to getElementsByClassName
+        var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
+        var randomPizzaImages = document.getElementsByClassName("img-responsive");
         var randomPizzaImagesLength = randomPizzaImages.length;
         var randomPizzasLength = randomPizzas.length;
         for (var i = 0; i < randomPizzasLength; i++) {
@@ -494,10 +498,11 @@ var resizePizzas = function(size) {
 };
 
 window.performance.mark("mark_start_generating"); // collect timing data
-
-// This for-loop actually creates and appends all of the pizzas when the page loads
+// declare the pizzasDiv variable outside of loop,
+// so the function only makes one DOM call.
+var pizzasDiv = document.getElementById("randomPizzas");
+// This for-loop creates and appends all of the pizzas when the page loads
 for (var i = 2; i < 100; i++) {
-    var pizzasDiv = document.getElementById("randomPizzas");
     // pizzaElementGenerator is all style
     pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
@@ -551,8 +556,8 @@ function updatePositions() {
         docScrollTopValue,
         phase,
         lastMoverLeft;
-
-    movers = document.querySelectorAll('.mover');
+/* changed querySelectorAll to getElementsByClassName */
+    movers = document.getElementsByClassName('mover');
     moversLength = movers.length;
     docScrollTopValue = document.body.scrollTop / 1250;
 
@@ -588,10 +593,16 @@ window.addEventListener('scroll', onScroll, false);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
-    var cols = 8;
-    var s = 256;
-    for (var i = 0; i < 18; i++) { //changed 200 to 30
-        var elem = document.createElement('img');
+/* moved DOM call, movingPizzas, outside the for statement and
+saved it into a local variable */
+    var movingPizzas = document.getElementById("movingPizzas1");
+    var cols = 8,
+        s = 256,
+        elem;
+        // Declare elem variable (var elem;) outside loop to prevent
+        // it from being created every time the loop is executed.
+    for (var i = 0; i < 24; i++) { //changed 200 to 24, multiple of 8
+        elem = document.createElement('img');
         elem.className = 'mover';
         elem.src = 'imageOptim/pizza_BG.png';
         elem.style.height = "100px";
@@ -600,7 +611,8 @@ document.addEventListener('DOMContentLoaded', function() {
         elem.height = 100;
         elem.basicLeft = (i % cols) * s;
         elem.style.top = (Math.floor(i / cols) * s) + 'px';
-        document.querySelector("#movingPizzas1").appendChild(elem);
+        // changed querySelector to getElementById
+        movingPizzas.appendChild(elem);
     }
     updatePositions();
 });

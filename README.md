@@ -78,27 +78,59 @@ dist
 
 Optimizations
 -------------
-### index.html
+### index.html & files
+
+#### index.html
 * minify html
-* inline css
 * resize & optimize images
-* minify perfmatters.js and load async; load google analytics async. move js bottom of page.
 * browser caching using a cache manifest
-* load google analytics script async
-* replace google font with browser font and remove font script
+* save images instead of linking to google server
+
+#### css/style.css
+* inline css
+* replace google font with browser font and remove font script from index.html
 * add media print attribute to print.css
- save images instead of linking to google server
+
+#### js/perfmatters.js
+* minify perfmatters.js and load async; load google analytics async 
+* move js bottom of page.
 
 
-### pizza.html 
+###pizza.html & files
+
+#### src/views/pizza.html 
 * minify html
-* concatenate style.css & bootstrap-grid.css into combined.css
-* minify combined.css
 * resize & optimize images
-* minify js
 * browser caching using a cache manifest, pizza.appcache
 * move main.js to bottom of the page
+
+#### src/views/js/main.js
+* minify js
 * replace html event handler attribue with event listener
 * use requestAnimationFrame(updatePositions) per instructed here: [html5rocks](http://www.html5rocks.com/en/tutorials/speed/animations/
 * to change pizza sizes, replace the the pizza images instead of changing their widths. Batch style changes of new image and div width change
-* reduce background pizzas from 199 to 17 since most you do not see
+* changed all usage of querySelector and querySelectorAll to either getElementsByClassName or getElementById if possible since these are live node lists and faster.
+* declared the pizzasDiv variable outside of loop so the function only makes one DOM call: var pizzasDiv = document.getElementById("randomPizzas");
+* moved DOM call, movingPizzas, outside the for statement and
+saved it into a local variable 
+var movingPizzas = document.getElementById("movingPizzas1");
+* Added 'use strict';
+* reduce background pizzas from 199 to 24 since most you do not see
+
+#### src/views/css/style.css
+* concatenate style.css & bootstrap-grid.css into combined.css
+* minify combined.css
+* .mover class: Took advantage of hardware accelerated CSS using 'backface-visibility: hidden' to increase site performance and triggered GPU using 'transform: translateZ(0)'. Added will-change: transform.
+  
+  ```
+  .mover {
+      position: fixed;
+      width: 256px;
+      z-index: -1;
+      will-change: transform;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+  }
+  ```
+
+
