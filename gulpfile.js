@@ -199,7 +199,6 @@ gulp.task('htmlPizza', ['optimizePizza'], function() {
             base: './src/views'
         }))
         .pipe($.if('*.js', $.uglify()))
-        // .pipe($.if('*.css', $.autoprefixer()))
         .pipe($.if('*.css', $.minifyCss()))
         .pipe($.htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest(options.dist + '/views'));
