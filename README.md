@@ -138,7 +138,7 @@ var movingPizzas = document.getElementById("movingPizzas1");
 
 ### Resources
 
-* Udacity Supporting Courses:[Website Performance Optimization](https://www.udacity.com/course/website-performance-optimization--ud884), [Browser Rendering Optimization](https://www.udacity.com/course/browser-rendering-optimization--ud860)
+* Udacity Supporting Courses: [Website Performance Optimization](https://www.udacity.com/course/website-performance-optimization--ud884), [Browser Rendering Optimization](https://www.udacity.com/course/browser-rendering-optimization--ud860)
 * [http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css](http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css)
 * [http://designmodo.com/backface-visibility-css-animation/](http://designmodo.com/backface-visibility-css-animation/)*
 * [https://css-tricks.com/almanac/properties/b/backface-visibility/](https://css-tricks.com/almanac/properties/b/backface-visibility/)
@@ -151,12 +151,11 @@ var movingPizzas = document.getElementById("movingPizzas1");
 * [http://www.sitepoint.com/bem-smacss-advice-from-developers/](http://www.sitepoint.com/bem-smacss-advice-from-developers/)
 * [http://gent.ilcore.com/2011/03/how-not-to-trigger-layout-in-webkit.html](http://gent.ilcore.com/2011/03/how-not-to-trigger-layout-in-webkit.html)
 * [http://csstriggers.com/](http://csstriggers.com/)
-https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome
-https://mozillagfx.wordpress.com/2013/07/22/hardware-acceleration-and-compositing/
-http://www.html5rocks.com/en/tutorials/speed/layers/
-Useful articles about appropriate css tags:
-https://developer.mozilla.org/en-US/docs/Web/CSS/will-change
-https://css-tricks.com/almanac/properties/w/will-change/
-http://www.sitepoint.com/introduction-css-will-change-property/
-https://developer.mozilla.org/en-US/docs/Web/CSS/transform
-https://css-tricks.com/almanac/properties/t/transform/
+* [https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome](https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome)
+* [https://mozillagfx.wordpress.com/2013/07/22/hardware-acceleration-and-compositing/](https://mozillagfx.wordpress.com/2013/07/22/hardware-acceleration-and-compositing/)
+* [http://www.html5rocks.com/en/tutorials/speed/layers/](http://www.html5rocks.com/en/tutorials/speed/layers/)
+* [https://developer.mozilla.org/en-US/docs/Web/CSS/will-change](https://developer.mozilla.org/en-US/docs/Web/CSS/will-change)
+* [https://css-tricks.com/almanac/properties/w/will-change/](https://css-tricks.com/almanac/properties/w/will-change/)
+* [http://www.sitepoint.com/introduction-css-will-change-property/](http://www.sitepoint.com/introduction-css-will-change-property/)
+* [https://developer.mozilla.org/en-US/docs/Web/CSS/transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
+* [https://css-tricks.com/almanac/properties/t/transform/](https://css-tricks.com/almanac/properties/t/transform/)
