@@ -1,4 +1,7 @@
-# Website Performance Optimization portfolio project
+#Udacity P4: Website Optimization (38 hrs)
+[Front End Web Developer Nanodegree Program](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001)
+
+Project Directions: You will optimize a provided website with a number of optimization- and performance-related issues so that it achieves a target PageSpeed score and runs at 60 frames per second.
 
 Usage
 -----
@@ -131,29 +134,29 @@ var movingPizzas = document.getElementById("movingPizzas1");
   }
   ```
 
-  
+##Technologies Used
+
 ### Resources
 
-[http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css](http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css)
-
-[http://designmodo.com/backface-visibility-css-animation/](http://designmodo.com/backface-visibility-css-animation/)
-
-[https://css-tricks.com/almanac/properties/b/backface-visibility/](https://css-tricks.com/almanac/properties/b/backface-visibility/)
-
-[https://developer.mozilla.org/en-US/docs/Web/CSS/transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
-
-[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management)
-
-[https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/](https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/)
-
-[http://www.html5rocks.com/en/tutorials/workers/basics/](http://www.html5rocks.com/en/tutorials/workers/basics/)
-
-[https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
-
-[https://en.bem.info/method/key-concepts/](https://en.bem.info/method/key-concepts/)
-
-[http://www.sitepoint.com/bem-smacss-advice-from-developers/](http://www.sitepoint.com/bem-smacss-advice-from-developers/)
-
-[http://gent.ilcore.com/2011/03/how-not-to-trigger-layout-in-webkit.html](http://gent.ilcore.com/2011/03/how-not-to-trigger-layout-in-webkit.html)
-
-[http://csstriggers.com/](http://csstriggers.com/)
+* Udacity Supporting Courses:[Website Performance Optimization](https://www.udacity.com/course/website-performance-optimization--ud884), [Browser Rendering Optimization](https://www.udacity.com/course/browser-rendering-optimization--ud860)
+* [http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css](http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css)
+* [http://designmodo.com/backface-visibility-css-animation/](http://designmodo.com/backface-visibility-css-animation/)*
+* [https://css-tricks.com/almanac/properties/b/backface-visibility/](https://css-tricks.com/almanac/properties/b/backface-visibility/)
+* [https://developer.mozilla.org/en-US/docs/Web/CSS/transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
+* [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management)
+* [https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/](https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/)
+* [http://www.html5rocks.com/en/tutorials/workers/basics/](http://www.html5rocks.com/en/tutorials/workers/basics/)
+* [https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
+* [https://en.bem.info/method/key-concepts/](https://en.bem.info/method/key-concepts/)
+* [http://www.sitepoint.com/bem-smacss-advice-from-developers/](http://www.sitepoint.com/bem-smacss-advice-from-developers/)
+* [http://gent.ilcore.com/2011/03/how-not-to-trigger-layout-in-webkit.html](http://gent.ilcore.com/2011/03/how-not-to-trigger-layout-in-webkit.html)
+* [http://csstriggers.com/](http://csstriggers.com/)
+https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome
+https://mozillagfx.wordpress.com/2013/07/22/hardware-acceleration-and-compositing/
+http://www.html5rocks.com/en/tutorials/speed/layers/
+Useful articles about appropriate css tags:
+https://developer.mozilla.org/en-US/docs/Web/CSS/will-change
+https://css-tricks.com/almanac/properties/w/will-change/
+http://www.sitepoint.com/introduction-css-will-change-property/
+https://developer.mozilla.org/en-US/docs/Web/CSS/transform
+https://css-tricks.com/almanac/properties/t/transform/

@@ -131,24 +131,24 @@ gulp.task('resizeSmall', function() {
 });
 
 /* After images resized need to be optimized or compressed using an algorithm that decides
-* what data to keep and what it can throw away while still maintaining visual integrity.
-* Plus need to get rid of extra metadata added during imageResize.
-*/
+ * what data to keep and what it can throw away while still maintaining visual integrity.
+ * Plus need to get rid of extra metadata added during imageResize.
+ */
 gulp.task('optimizePizza', ['resize100', 'resizeBG', 'resizeLarge', 'resizeMedium', 'resizeSmall', 'resize360', 'resize720'], function() {
     return gulp.src('src/views/imageOptim/*.*')
-         .pipe($.if('*.jpg', $.imagemin({
-              use:[imageminJpegRecompress({
-                loops:4,
+        .pipe($.if('*.jpg', $.imagemin({
+            use: [imageminJpegRecompress({
+                loops: 4,
                 min: 40,
                 max: 90,
-                quality:'medium'
-              })]
-            })))
+                quality: 'medium'
+            })]
+        })))
         .pipe($.if('*.png', $.imagemin({
-              use:[imageminOptipng({
+            use: [imageminOptipng({
                 optimizationLevel: 7
-              })]
-            })))
+            })]
+        })))
         .pipe(gulp.dest('dist/views/imageOptim/'));
 });
 
@@ -160,22 +160,22 @@ gulp.task('optimize', function() {
             imageMagick: true
         })))
         .pipe($.imageResize({
-                upscale: false,
-                imageMagick: true
-            }))
+            upscale: false,
+            imageMagick: true
+        }))
         .pipe($.if('*.jpg', $.imagemin({
-              use:[imageminJpegRecompress({
-                loops:4,
+            use: [imageminJpegRecompress({
+                loops: 4,
                 min: 50,
                 max: 70,
-                quality:'medium'
-              })]
-            })))
+                quality: 'medium'
+            })]
+        })))
         .pipe($.if('*.png', $.imagemin({
-              use:[imageminOptipng({
+            use: [imageminOptipng({
                 optimizationLevel: 6
-              })]
-            })))
+            })]
+        })))
         .pipe(gulp.dest('dist/img/'));
 });
 
@@ -188,7 +188,7 @@ gulp.task('inline', ['optimize'], function() {
             base: './src'
         }))
         .pipe($.if('*.js', $.uglify()))
-        .pipe($.htmlmin({collapseWhitespace: true}))
+        .pipe($.htmlmin({ collapseWhitespace: true }))
         .pipe(gulp.dest(options.dist));
 });
 
@@ -200,7 +200,7 @@ gulp.task('htmlPizza', ['optimizePizza'], function() {
         }))
         .pipe($.if('*.js', $.uglify()))
         .pipe($.if('*.css', $.minifyCss()))
-        .pipe($.htmlmin({collapseWhitespace: true}))
+        .pipe($.htmlmin({ collapseWhitespace: true }))
         .pipe(gulp.dest(options.dist + '/views'));
 });
 
@@ -210,8 +210,8 @@ gulp.task('clean', function() {
 
 gulp.task('build', ['htmlPizza', 'inline'], function() {
     return gulp.src([
-        './src/views/pizza.appcache',
-        './src/portfolio.appcache'
+            './src/views/pizza.appcache',
+            './src/portfolio.appcache'
         ], {
             base: './src'
         })
@@ -219,9 +219,9 @@ gulp.task('build', ['htmlPizza', 'inline'], function() {
 });
 
 gulp.task('deploy', function() {
-        return gulp.src(options.dist + '/**/*')
-            .pipe($.ghPages());
-    })
+    return gulp.src(options.dist + '/**/*')
+        .pipe($.ghPages());
+})
 
 // Run gulp
 gulp.task('default', ['clean'], function() {
