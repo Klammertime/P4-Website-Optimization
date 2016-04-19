@@ -1,16 +1,17 @@
-#Udacity P4: Website Optimization (38 hrs)
-[Front End Web Developer Nanodegree Program](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001)
+#Website Optimization
 
-Project Directions: You will optimize a provided website with a number of optimization- and performance-related issues so that it achieves a target PageSpeed score and runs at 60 frames per second.
+**Project 4: Website Optimization (38 hrs)** ~ [Udacity Front End Web Developer Nanodegree Program](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001)
+
+**Directions**: You will optimize a provided website with a number of optimization- and performance-related issues so that it achieves a target PageSpeed score and runs at 60 frames per second.
 
 Usage
 -----
-1. Clone this repository
-2. Navigate to your local copy of index.html through your web browser 
+Navigate to project hosted on github.com [**here**](http://klammertime.github.io/P4-Website-Optimization/)
 
 **OR**
 
-Navigate to page hosted on github.com [here](http://klammertime.github.io/frontend-nanodegree-mobile-portfolio/)
+1. Clone this repository
+2. Navigate to your local copy of index.html through your web browser 
 
 Work
 ----
@@ -138,24 +139,16 @@ var movingPizzas = document.getElementById("movingPizzas1");
 
 ### Resources
 
-* Udacity Supporting Courses: [Website Performance Optimization](https://www.udacity.com/course/website-performance-optimization--ud884), [Browser Rendering Optimization](https://www.udacity.com/course/browser-rendering-optimization--ud860)
-* [http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css](http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css)
-* [http://designmodo.com/backface-visibility-css-animation/](http://designmodo.com/backface-visibility-css-animation/)*
-* [https://css-tricks.com/almanac/properties/b/backface-visibility/](https://css-tricks.com/almanac/properties/b/backface-visibility/)
-* [https://developer.mozilla.org/en-US/docs/Web/CSS/transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
-* [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management)
-* [https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/](https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/)
-* [http://www.html5rocks.com/en/tutorials/workers/basics/](http://www.html5rocks.com/en/tutorials/workers/basics/)
-* [https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
-* [https://en.bem.info/method/key-concepts/](https://en.bem.info/method/key-concepts/)
-* [http://www.sitepoint.com/bem-smacss-advice-from-developers/](http://www.sitepoint.com/bem-smacss-advice-from-developers/)
-* [http://gent.ilcore.com/2011/03/how-not-to-trigger-layout-in-webkit.html](http://gent.ilcore.com/2011/03/how-not-to-trigger-layout-in-webkit.html)
-* [http://csstriggers.com/](http://csstriggers.com/)
-* [https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome](https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome)
-* [https://mozillagfx.wordpress.com/2013/07/22/hardware-acceleration-and-compositing/](https://mozillagfx.wordpress.com/2013/07/22/hardware-acceleration-and-compositing/)
-* [http://www.html5rocks.com/en/tutorials/speed/layers/](http://www.html5rocks.com/en/tutorials/speed/layers/)
-* [https://developer.mozilla.org/en-US/docs/Web/CSS/will-change](https://developer.mozilla.org/en-US/docs/Web/CSS/will-change)
-* [https://css-tricks.com/almanac/properties/w/will-change/](https://css-tricks.com/almanac/properties/w/will-change/)
-* [http://www.sitepoint.com/introduction-css-will-change-property/](http://www.sitepoint.com/introduction-css-will-change-property/)
-* [https://developer.mozilla.org/en-US/docs/Web/CSS/transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
-* [https://css-tricks.com/almanac/properties/t/transform/](https://css-tricks.com/almanac/properties/t/transform/)
+* **Udacity Supporting Courses**: [Website Performance Optimization](https://www.udacity.com/course/website-performance-optimization--ud884), [Browser Rendering Optimization](https://www.udacity.com/course/browser-rendering-optimization--ud860)
+* **Treehouse**[Increase your sites performance with hardware accelerated css](http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css), [Front End Performance Optimization](https://teamtreehouse.com/library/front-end-performance-optimization), [Website Optimization](https://teamtreehouse.com/library/website-optimization)
+* **MDN**:[CSS transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform), [Memory Management](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management), [Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers), [will-change CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/will-change)
+* **CSS-Tricks**: [Backface-visibility](https://css-tricks.com/almanac/properties/b/backface-visibility/), [will-change/](https://css-tricks.com/almanac/properties/w/will-change/), [transform](https://css-tricks.com/almanac/properties/t/transform/)
+* **SitePoint**: [CSS will-change Property](http://www.sitepoint.com/introduction-css-will-change-property/), [BEM and SMACSS: Advice From Developers Who’ve Been There](http://www.sitepoint.com/bem-smacss-advice-from-developers/)
+* **html5Rocks**: [Accelerated Rendering in Chrome](http://www.html5rocks.com/en/tutorials/speed/layers/), [The Basics of Web Workers](http://www.html5rocks.com/en/tutorials/workers/basics/)
+* [Writing Fast, Memory-Efficient JavaScript](https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/)
+* [BEM: Key concepts](https://en.bem.info/method/key-concepts/)
+* [How (not) to trigger a layout in WebKit](http://gent.ilcore.com/2011/03/how-not-to-trigger-layout-in-webkit.html)
+* * [GPU Accelerated Compositing in Chrome](https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome)
+* [Mozilla Gfx Team Blog - Hardware acceleration and compositing](https://mozillagfx.wordpress.com/2013/07/22/hardware-acceleration-and-compositing/)
+* [Using backface-visibility and CSS Animations](http://designmodo.com/backface-visibility-css-animation/)*
+* http://csstriggers.com/
