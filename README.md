@@ -37,7 +37,7 @@ Structure
 * development files (i.e. originals) are in the _src_ directory
 * production files (i.e. minified and processed project files) are in the _dist_ directory
 
-### Development:
+## Development:
 
 ```
 src
@@ -58,7 +58,7 @@ src
      -- imageOptim
 ```
 
-### Production:
+## Production:
 
 ```
 dist
@@ -136,8 +136,9 @@ var movingPizzas = document.getElementById("movingPizzas1");
   ```
 
 ##Technologies Used
+Chrome Developer Tools, Critical Rendering Path, CSS, HTML, 60 FPS Rendering,
 
-### Resources
+##Resources
 
 * **Udacity Supporting Courses**: [Website Performance Optimization](https://www.udacity.com/course/website-performance-optimization--ud884), [Browser Rendering Optimization](https://www.udacity.com/course/browser-rendering-optimization--ud860)
 * **Treehouse**[Increase your sites performance with hardware accelerated css](http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css), [Front End Performance Optimization](https://teamtreehouse.com/library/front-end-performance-optimization), [Website Optimization](https://teamtreehouse.com/library/website-optimization)
