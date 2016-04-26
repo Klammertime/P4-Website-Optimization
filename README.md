@@ -1,6 +1,6 @@
 #Website Optimization
 
-**Project 4: Website Optimization (38 hrs)** ~ [Udacity Front End Web Developer Nanodegree Program](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001)
+**Project 4: Website Optimization (68 hrs)** ~ [Udacity Front End Web Developer Nanodegree Program](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001)
 
 **Directions**: You will optimize a provided website with a number of optimization- and performance-related issues so that it achieves a target PageSpeed score and runs at 60 frames per second.
 
@@ -19,14 +19,14 @@ After cloning the project, work in the files located in the src directory.
 
 Build
 -----
-1. Download and install npm by way of installing node.js (it comes packaged with it): [node.js](https://nodejs.org/en/) 
-2. While in the root project directory, run: 
+* Download and install npm by way of installing node.js (it comes packaged with it): [node.js](https://nodejs.org/en/) 
+* While in the root project directory, run: 
   
 ```
 npm install
 ```
 
-3. To build the dist folder, from the root project directory run the following:
+* To build the dist folder, from the root project directory run the following:
 
 ```
 gulp
@@ -116,7 +116,7 @@ Optimizations
 * moved DOM call, movingPizzas, outside the for statement and
 saved it into a local variable 
 var movingPizzas = document.getElementById("movingPizzas1");
-* [Invoked strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) by adding 'use strict'; at the top of the file.
+* [invoked strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
 * reduce background pizzas from 199 to 24 since most you do not see
 
 #### src/views/css/style.css
@@ -141,7 +141,7 @@ Chrome Developer Tools, Critical Rendering Path, CSS, HTML, 60 FPS Rendering,
 ##Resources
 
 * **Udacity Supporting Courses**: [Website Performance Optimization](https://www.udacity.com/course/website-performance-optimization--ud884), [Browser Rendering Optimization](https://www.udacity.com/course/browser-rendering-optimization--ud860)
-* **Treehouse**[Increase your sites performance with hardware accelerated css](http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css), [Front End Performance Optimization](https://teamtreehouse.com/library/front-end-performance-optimization), [Website Optimization](https://teamtreehouse.com/library/website-optimization)
+* **Treehouse**: [Increase your sites performance with hardware accelerated css](http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css), [Front End Performance Optimization](https://teamtreehouse.com/library/front-end-performance-optimization), [Website Optimization](https://teamtreehouse.com/library/website-optimization)
 * **MDN**:[CSS transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform), [Memory Management](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management), [Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers), [will-change CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/will-change)
 * **CSS-Tricks**: [Backface-visibility](https://css-tricks.com/almanac/properties/b/backface-visibility/), [will-change/](https://css-tricks.com/almanac/properties/w/will-change/), [transform](https://css-tricks.com/almanac/properties/t/transform/)
 * **SitePoint**: [CSS will-change Property](http://www.sitepoint.com/introduction-css-will-change-property/), [BEM and SMACSS: Advice From Developers Who’ve Been There](http://www.sitepoint.com/bem-smacss-advice-from-developers/)
@@ -149,7 +149,7 @@ Chrome Developer Tools, Critical Rendering Path, CSS, HTML, 60 FPS Rendering,
 * [Writing Fast, Memory-Efficient JavaScript](https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/)
 * [BEM: Key concepts](https://en.bem.info/method/key-concepts/)
 * [How (not) to trigger a layout in WebKit](http://gent.ilcore.com/2011/03/how-not-to-trigger-layout-in-webkit.html)
-* * [GPU Accelerated Compositing in Chrome](https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome)
+* [GPU Accelerated Compositing in Chrome](https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome)
 * [Mozilla Gfx Team Blog - Hardware acceleration and compositing](https://mozillagfx.wordpress.com/2013/07/22/hardware-acceleration-and-compositing/)
 * [Using backface-visibility and CSS Animations](http://designmodo.com/backface-visibility-css-animation/)*
 * http://csstriggers.com/
