@@ -4,7 +4,7 @@
 
 I optimized a provided website with a number of optimization- and performance-related issues so that it achieved a target PageSpeed score and runs at 60 frames per second. [**This page**](http://klammertime.github.io/P4-Website-Optimization/views/pizza.html) of the provided website will really drive home the challenge presented. (I did not design this ;)
 
-###[**~VIEW ONLINE HERE~**](http://klammertime.github.io/P4-Website-Optimization/)
+###[**~VIEW WEBSITE HERE~**](http://klammertime.github.io/P4-Website-Optimization/)
 
 Usage
 -----
