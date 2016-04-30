@@ -2,14 +2,12 @@
 
 **Project 4: Website Optimization (68 hrs)** ~ [Udacity Front End Web Developer Nanodegree Program](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001)
 
-**Directions**: You will optimize a provided website with a number of optimization- and performance-related issues so that it achieves a target PageSpeed score and runs at 60 frames per second.
+I optimized a provided website with a number of optimization- and performance-related issues so that it achieved a target PageSpeed score and runs at 60 frames per second. [**This page**](http://klammertime.github.io/P4-Website-Optimization/views/pizza.html) of the provided website will really drive home the challenge presented. (I did not design this ;)
+
+###[**~VIEW WEBSITE OPTIMIZATION ONLINE HERE~**](http://klammertime.github.io/P4-Website-Optimization/)
 
 Usage
 -----
-Navigate to project hosted on github.com [**here**](http://klammertime.github.io/P4-Website-Optimization/)
-
-**OR**
-
 1. Clone this repository
 2. Navigate to your local copy of index.html through your web browser 
 
@@ -136,7 +134,10 @@ var movingPizzas = document.getElementById("movingPizzas1");
   ```
 
 ##Technologies Used
-Chrome Developer Tools, Critical Rendering Path, CSS, HTML, 60 FPS Rendering,
+Chrome Developer Tools, Critical Rendering Path, CSS, HTML, 60 FPS Rendering
+
+##Style Guide Used
+[Udacity Front-End Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/)
 
 ##Resources
 
