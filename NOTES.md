@@ -51,7 +51,7 @@
 * You are supposed to pick your battles, since their are tradeoffs to different changes you make.
  
 ###RAIL or LIAR: Load, Idle, Animations, Response
-* 4 major areas of an app's lifecycle: **RAIL**(really LIAR if in order):
+* 4 major areas of an app's lifecycle: **RAIL** (really LIAR if in order):
 **Load, Idle, Animations, Response**. However, most apps do multiple loads, so load is not always at the beginning, for example, with XHR, web sockets, etc.
 
 * **Load & Idle**: Users want app to load quickly. You want your initial load to be done in 1 second. After an app is loaded, its usually idle, waiting for the user to interact. This is our opportunity to deal with things we deferred to meet that 1 sec load time. Normally these idle periods are 50ms long however we might have several of them in one go. These idle times are fantastic times to get some heavy lifting done so when the user interacts things are fast. (Best practice is to keep your post-load work to 50ms chunks)
@@ -67,10 +67,12 @@
 
 * Teacher used something called, FLIP, first last invert play.
 
-### Load (1 sec) > Idle (50ms chunks) > Animation (16ms or really 10-12ms) > Response (100ms or 1/10th sec)
+#### Load (1 sec) > Idle (50ms chunks) > Animation (16ms or really 10-12ms) > Response (100ms or 1/10th sec)
+
 * It looks like each frame only has ~10ms to be done with the entire cycle of JS > Style > Layout  > Paint > Composite. So if you interrupt one of those, such as Layout, with JS, it can cause issues. 
 
 * Looking into the JS portion of the pipeline more closely: avoid micro-optimizations. Like obsessing over for...loop or while loop. We don't know how the JS engine will treat or run our code, since the code we write is not what get's run. Only start looking into microoptimizations if you've exhausted your other options. There are other things you can do before that, such as the following: 
+
     1) Make sure the JS runs at the right time with requestAnimationFrame: 
 
         - The browser has very little time to render the frame at 60 frames per second. So in that 10ms you have to do it all, which means the JavaScript portion should be kept at 3-4ms at most since their will be other work like style calculations, layer managment and compositing that will come afterwards. Imagine the browser is in the middle of doing style work and then in comes style work that needs attention. The browser has to deal with the JS that just came in before it can move to other tasks. That new JS will make the work for the frame to have to be redone, which could mean missing the frame. 
@@ -80,15 +82,19 @@
         - Older code on the web for animation uses setTimeout or setInterval because in the past that's all there was (jQuery still does). The problem with these is that the JS engine pays no attention to the rendering pipleline when scheduling these. Not a good fit for animations. 
     
         - Here's how you use it:
-        ```
-        2) Fcn gets called, do your animation, and at the end of it, you schedule the next one. The browser takes care of when it should run and how.
-        function animate() {
-        // Do something here
-        requestAnimationFrame(animate);
-        }
-        1) You make a call to it and tell it which function to call
-        requestAnimationFrame(animate);
-        ```
+        
+            ```
+           // Second: Fcn gets called, do your animation, and at the end of  //it, you schedule the next one. The browser takes care of when it //should run and how.
+
+            function animate() {
+            // Do something here
+                requestAnimationFrame(animate);
+            }
+
+            // First: You make a call to it and tell it which function to call
+            requestAnimationFrame(animate);
+            ```
+
         - All browsers support rAF except IE9, where you can use polyfill.
     
     2) Make sure the JS doesn't take too long to run with Web Workers:
