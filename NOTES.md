@@ -12,7 +12,7 @@
 * 16ms/frame is all you have to make a frame to make it stay smooth, but since the browser has housekeeping work to do in making each frame you have more like 10ms/frame.
 
 ###Style > Layout > Paint > Composite
-* In order to optimize fps you need to understand what goes into making a frame. So, **what goes into making a frame?** Udacity's course 'Website Performance Optimization' goes into this in more detail but roughly:
+* In order to optimize fps you need to understand what goes into making a frame. So, **what goes into making a frame?** 
     - The browser makes a GET request to a server
     - The server responds by sending some HTML
     - The browser parses the document and creates the DOM
@@ -71,15 +71,15 @@
 * It looks like each frame only has ~10ms to be done with the entire cycle of JS > Style > Layout  > Paint > Composite. So if you interrupt one of those, such as Layout, with JS, it can cause issues. 
 
 * Looking into the JS portion of the pipeline more closely: avoid micro-optimizations. Like obsessing over for...loop or while loop. We don't know how the JS engine will treat or run our code, since the code we write is not what get's run. Only start looking into microoptimizations if you've exhausted your other options. There are other things you can do before that, such as the following: 
-    **1) Make sure the JS runs at the right time with requestAnimationFrame**: 
+    1) Make sure the JS runs at the right time with requestAnimationFrame: 
 
-    * The browser has very little time to render the frame at 60 frames per second. So in that 10ms you have to do it all, which means the JavaScript portion should be kept at 3-4ms at most since their will be other work like style calculations, layer managment and compositing that will come afterwards. Imagine the browser is in the middle of doing style work and then in comes style work that needs attention. The browser has to deal with the JS that just came in before it can move to other tasks. That new JS will make the work for the frame to have to be redone, which could mean missing the frame. 
+        - The browser has very little time to render the frame at 60 frames per second. So in that 10ms you have to do it all, which means the JavaScript portion should be kept at 3-4ms at most since their will be other work like style calculations, layer managment and compositing that will come afterwards. Imagine the browser is in the middle of doing style work and then in comes style work that needs attention. The browser has to deal with the JS that just came in before it can move to other tasks. That new JS will make the work for the frame to have to be redone, which could mean missing the frame. 
     
-    * requestAnimationFrame schedules JavaScript to run at the earliest possible moment in each frame. That gives the browser as much time as possible to run JS, then style, layout, paint, then composite.
+        - requestAnimationFrame schedules JavaScript to run at the earliest possible moment in each frame. That gives the browser as much time as possible to run JS, then style, layout, paint, then composite.
     
-    * Older code on the web for animation uses setTimeout or setInterval because in the past that's all there was (jQuery still does). The problem with these is that the JS engine pays no attention to the rendering pipleline when scheduling these. Not a good fit for animations. 
+        - Older code on the web for animation uses setTimeout or setInterval because in the past that's all there was (jQuery still does). The problem with these is that the JS engine pays no attention to the rendering pipleline when scheduling these. Not a good fit for animations. 
     
-    * Here's how you use it:
+        - Here's how you use it:
         ```
         2) Fcn gets called, do your animation, and at the end of it, you schedule the next one. The browser takes care of when it should run and how.
         function animate() {
@@ -89,23 +89,25 @@
         1) You make a call to it and tell it which function to call
         requestAnimationFrame(animate);
         ```
-    * All browsers support rAF except IE9, where you can use polyfill.
+        - All browsers support rAF except IE9, where you can use polyfill.
     
-    **2) Make sure the JS doesn't take too long to run with Web Workers**:
-    * Since everything for the frame has to share that 16ms timespan, JS has a portion of that. Its easy for JS to take a while to run, especially for frameworks and libraries, since they need time to do their work, such as handling views, callbacks or analyzing data. You can find out how long the JS takes to run in the Timeline, with JS Profiler turned on. Then hit record. Only use the profiler when you know you have a problem with long running JS. 
+    2) Make sure the JS doesn't take too long to run with Web Workers:
+
+        - Since everything for the frame has to share that 16ms timespan, JS has a portion of that. Its easy for JS to take a while to run, especially for frameworks and libraries, since they need time to do their work, such as handling views, callbacks or analyzing data. You can find out how long the JS takes to run in the Timeline, with JS Profiler turned on. Then hit record. Only use the profiler when you know you have a problem with long running JS. 
     
-    * Web Workers: These provide an interface for spawning scripts to run in the background. Normally web sites run in a single thread running on the operating system. WW allow you to run JS in a totally different scope than the main window and on a totally different operating system thread. Whatever is happening in the main thread won't be affected by the worker thread and the opposite is true.
+        - Web Workers: These provide an interface for spawning scripts to run in the background. Normally web sites run in a single thread running on the operating system. WW allow you to run JS in a totally different scope than the main window and on a totally different operating system thread. Whatever is happening in the main thread won't be affected by the worker thread and the opposite is true.
     
-    * For More on web workers: [https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
+        - For More on web workers: [https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
     
-    **3) Memory Management**: 
-    * JS is garbage collected, which means as devs we don't have to worry about it but the downside is that the JS engine has to handle that itself and when it decides to run the garbage collector, nothing else runs. This can cause visible pauses. You can't always predict whether your code will be garbagey, so that's why you have to measure it using chrome dev tools in timeline, switch on memory profile then record it. 
+    3) Memory Management: 
+
+        - JS is garbage collected, which means as devs we don't have to worry about it but the downside is that the JS engine has to handle that itself and when it decides to run the garbage collector, nothing else runs. This can cause visible pauses. You can't always predict whether your code will be garbagey, so that's why you have to measure it using chrome dev tools in timeline, switch on memory profile then record it. 
     
-    * You can see a steep line then it drops off, which is the garbage collection occurring. If there are a lot of fast climbs, we are assigning memory fast and often. Also, when garbage collection runs, does it take it back to zero? If not, their is a memory leak.
+        - You can see a steep line then it drops off, which is the garbage collection occurring. If there are a lot of fast climbs, we are assigning memory fast and often. Also, when garbage collection runs, does it take it back to zero? If not, their is a memory leak.
     
-    * You can uncheck memory then go to the details below, or cmd f, enter GC in search to see how long its taking. (GC is garbage collection).
+        - You can uncheck memory then go to the details below, or cmd f, enter GC in search to see how long its taking. (GC is garbage collection).
     
-    * For More on memory management: 
+        - For More on memory management: 
         - [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management)
         - [Udacity - JS Memory Management](https://classroom.udacity.com/nanodegrees/nd001/parts/00113454012/modules/273584856175461/lessons/4138168623/concepts/41645386230923)
     
@@ -234,7 +236,10 @@ For older browsers you have to use this hack:
     - Minimize use of render blocking resources (CSS): Use media queries on <link> to unblock rendering & inline CSS
     - Minimize use of parser blocking resouces (JS): defer JS execution and use async attribute on <script>
     
-* General buckets or themes: 1) Minimize bytes or critical bytes 2) Reduce critical resouces 3) Shorten critical rendering path length, best-case is 1, keep round-trips down.
+* General buckets or themes: 
+1) Minimize bytes or critical bytes 
+2) Reduce critical resouces 
+3) Shorten critical rendering path length, best-case is 1, keep round-trips down.
 
    
 
