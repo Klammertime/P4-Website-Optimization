@@ -1,10 +1,10 @@
-#Website Optimization
+# Website Optimization
 
 **Project 4: Website Optimization (68 hrs)** ~ [Udacity Front End Web Developer Nanodegree Program](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001)
 
 I optimized a provided website with a number of optimization- and performance-related issues so that it achieved a target PageSpeed score and runs at 60 frames per second. [**This page**](http://klammertime.github.io/P4-Website-Optimization/views/pizza.html) of the provided website will really drive home the challenge presented. (I did not design this ;)
 
-###[**~VIEW WEBSITE HERE~**](http://klammertime.github.io/P4-Website-Optimization/)
+### [**VIEW WEBSITE HERE**](http://klammertime.github.io/P4-Website-Optimization/)
 
 Usage
 -----
@@ -96,7 +96,7 @@ Optimizations
 * move js bottom of page.
 
 
-###pizza.html & files
+### pizza.html & files
 
 #### src/views/pizza.html 
 * minify html
@@ -133,13 +133,13 @@ var movingPizzas = document.getElementById("movingPizzas1");
   }
   ```
 
-##Technologies Used
+## Technologies Used
 Chrome Developer Tools, Critical Rendering Path, CSS, HTML, 60 FPS Rendering
 
-##Style Guide Used
+## Style Guide Used
 [Udacity Front-End Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/)
 
-##Resources
+## Resources
 
 * **Udacity Supporting Courses**: [Website Performance Optimization](https://www.udacity.com/course/website-performance-optimization--ud884), [Browser Rendering Optimization](https://www.udacity.com/course/browser-rendering-optimization--ud860)
 * **Treehouse**: [Increase your sites performance with hardware accelerated css](http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css), [Front End Performance Optimization](https://teamtreehouse.com/library/front-end-performance-optimization), [Website Optimization](https://teamtreehouse.com/library/website-optimization)
