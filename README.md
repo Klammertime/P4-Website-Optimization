@@ -141,8 +141,9 @@ Chrome Developer Tools, Critical Rendering Path, CSS, HTML, 60 FPS Rendering
 
 ## Resources
 
-* **Udacity Supporting Courses**: [Website Performance Optimization](https://www.udacity.com/course/website-performance-optimization--ud884), [Browser Rendering Optimization](https://www.udacity.com/course/browser-rendering-optimization--ud860)
-* **Treehouse**: [Increase your sites performance with hardware accelerated css](http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css), [Front End Performance Optimization](https://teamtreehouse.com/library/front-end-performance-optimization), [Website Optimization](https://teamtreehouse.com/library/website-optimization)
+* **Udacity Supporting Courses**: [https://github.com/udacity/frontend-nanodegree-mobile-portfolio](https://github.com/udacity/frontend-nanodegree-mobile-portfolio), [Website Performance Optimization](https://www.udacity.com/course/website-performance-optimization--ud884), [Browser Rendering Optimization](https://www.udacity.com/course/browser-rendering-optimization--ud860)
+* **Treehouse**: [Increase your sites performance with hardware accelerated css](http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css), [Front End Performance Optimization](https://teamtreehouse.com/library/front-end-performance-optimization), [Website Optimization](https://teamtreehouse.com/library/website-optimization), [Using Gulp's Gulp Useref for a Full Build Pipeline](https://teamtreehouse.com/library/using-gulps-gulpuseref-for-a-full-build-pipeline)
+* **Pluralsight**: [Using Google PageSpeed Insights to Improve Web Performance] (https://www.pluralsight.com/courses/google-pagespeed-insights-web-performance), [Website Performance](https://www.pluralsight.com/courses/website-performance)
 * **MDN**:[CSS transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform), [Memory Management](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management), [Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers), [will-change CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/will-change)
 * **CSS-Tricks**: [Backface-visibility](https://css-tricks.com/almanac/properties/b/backface-visibility/), [will-change/](https://css-tricks.com/almanac/properties/w/will-change/), [transform](https://css-tricks.com/almanac/properties/t/transform/)
 * **SitePoint**: [CSS will-change Property](http://www.sitepoint.com/introduction-css-will-change-property/), [BEM and SMACSS: Advice From Developers Who’ve Been There](http://www.sitepoint.com/bem-smacss-advice-from-developers/)
@@ -152,5 +153,7 @@ Chrome Developer Tools, Critical Rendering Path, CSS, HTML, 60 FPS Rendering
 * [How (not) to trigger a layout in WebKit](http://gent.ilcore.com/2011/03/how-not-to-trigger-layout-in-webkit.html)
 * [GPU Accelerated Compositing in Chrome](https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome)
 * [Mozilla Gfx Team Blog - Hardware acceleration and compositing](https://mozillagfx.wordpress.com/2013/07/22/hardware-acceleration-and-compositing/)
-* [Using backface-visibility and CSS Animations](http://designmodo.com/backface-visibility-css-animation/)*
-* http://csstriggers.com/
+* [Using backface-visibility and CSS Animations](http://designmodo.com/backface-visibility-css-animation/)
+* [http://csstriggers.com/](http://csstriggers.com/)
+* [A Modern Approach to Improving Website Speed](https://www.webpagefx.com/blog/web-design/improve-website-speed/)
+* [Simulate Mobile Devices with Device Mode](https://developers.google.com/web/tools/chrome-devtools/device-mode/?utm_source=dcc&utm_medium=redirect&utm_campaign=2016q3)
