@@ -82,19 +82,17 @@
     - Older code on the web for animation uses setTimeout or setInterval because in the past that's all there was (jQuery still does). The problem with these is that the JS engine pays no attention to the rendering pipleline when scheduling these. Not a good fit for animations. 
     
     - Here's how you use it:
-        
-            ```
-           // Second: Fcn gets called, do your animation, and at the end of  //it, you schedule the next one. The browser takes care of when it //should run and how.
+    ```
+   // Second: Fcn gets called, do your animation, and at the end of  //it, you schedule the next one. The browser takes care of when it //should run and how.
 
-            function animate() {
-            // Do something here
-                requestAnimationFrame(animate);
-            }
+    function animate() {
+    // Do something here
+        requestAnimationFrame(animate);
+    }
 
-            // First: You make a call to it and tell it which function to call
-            requestAnimationFrame(animate);
-            ```
-
+    // First: You make a call to it and tell it which function to call
+    requestAnimationFrame(animate);
+    ```
 - All browsers support rAF except IE9, where you can use polyfill.
     
  2) Make sure the JS doesn't take too long to run with Web Workers:
@@ -103,19 +101,18 @@
     
     - Web Workers: These provide an interface for spawning scripts to run in the background. Normally web sites run in a single thread running on the operating system. WW allow you to run JS in a totally different scope than the main window and on a totally different operating system thread. Whatever is happening in the main thread won't be affected by the worker thread and the opposite is true.
     
-    - For More on web workers: [https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
+* [Using_web_workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
     
 3) Memory Management: 
 
-        - JS is garbage collected, which means as devs we don't have to worry about it but the downside is that the JS engine has to handle that itself and when it decides to run the garbage collector, nothing else runs. This can cause visible pauses. You can't always predict whether your code will be garbagey, so that's why you have to measure it using chrome dev tools in timeline, switch on memory profile then record it. 
+    - JS is garbage collected, which means as devs we don't have to worry about it but the downside is that the JS engine has to handle that itself and when it decides to run the garbage collector, nothing else runs. This can cause visible pauses. You can't always predict whether your code will be garbagey, so that's why you have to measure it using chrome dev tools in timeline, switch on memory profile then record it. 
     
-        - You can see a steep line then it drops off, which is the garbage collection occurring. If there are a lot of fast climbs, we are assigning memory fast and often. Also, when garbage collection runs, does it take it back to zero? If not, their is a memory leak.
+    - You can see a steep line then it drops off, which is the garbage collection occurring. If there are a lot of fast climbs, we are assigning memory fast and often. Also, when garbage collection runs, does it take it back to zero? If not, their is a memory leak.
     
-        - You can uncheck memory then go to the details below, or cmd f, enter GC in search to see how long its taking. (GC is garbage collection).
+    - You can uncheck memory then go to the details below, or cmd f, enter GC in search to see how long its taking. (GC is garbage collection).
     
-        - For More on memory management: 
-        - [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management)
-        - [Udacity - JS Memory Management](https://classroom.udacity.com/nanodegrees/nd001/parts/00113454012/modules/273584856175461/lessons/4138168623/concepts/41645386230923)
+    - [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management)
+    - [Udacity - JS Memory Management](https://classroom.udacity.com/nanodegrees/nd001/parts/00113454012/modules/273584856175461/lessons/4138168623/concepts/41645386230923)
     
 ### Styles & Layout
 * There are also style modifications we can make, such as **reducing selector complexity**, which means using fewer tags and class names to select elements. Instead of `:nth-child(3)` since it has to figure out if it's the 3rd child or not, you can use another class, or combine the classes using BEM, Block Element Modifier, such as `.box--three` where box is the Block, there is no element, and three is the modifier, instead of using:
