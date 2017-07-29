@@ -1,5 +1,5 @@
 
-##Udacity: Browser Rendering Optimization
+## Udacity: Browser Rendering Optimization
 
 * If a site takes a long time to load, 80% is usually in the front-end, not back-end, which is the opposite of what people had thought. So most of the performance burden lies on the front-end devs shoulders.
 
@@ -11,7 +11,7 @@
 
 * 16ms/frame is all you have to make a frame to make it stay smooth, but since the browser has housekeeping work to do in making each frame you have more like 10ms/frame.
 
-###Style > Layout > Paint > Composite
+### Style > Layout > Paint > Composite
 * In order to optimize fps you need to understand what goes into making a frame. So, **what goes into making a frame?** 
     - The browser makes a GET request to a server
     - The server responds by sending some HTML
@@ -32,14 +32,14 @@
 
 * This resource has all you need to know to use the timeline in dev tools -->**Performance profiling with the Timeline**: [https://developer.chrome.com/devtools/docs/timeline#rendering-event-properties](https://developer.chrome.com/devtools/docs/timeline#rendering-event-properties)
 
-###JavaScript > Style > Layout > Paint > Composite
+### JavaScript > Style > Layout > Paint > Composite
 * Now we're adding JavaScript to the front of the pipeline, since besides static pages, this is usually what creating a frame looks like when we are dealing with more than just a static page: **JavaScript > Style > Layout > Paint > Composite**
 
 * **JavaScript** Normally you use JS to handle work that results in visual changes, whether its jQuery's animation functions or adding DOM elements to the page. But you don't have to use JS to make visual changes to the page. You can also use CSS animations or web animation API. 
 
 * Changes we make in JS won't necessarily affect every part of the pipeline.
 
-###Rendering Pipeline in Action: 3 main examples of different types of changes
+### Rendering Pipeline in Action: 3 main examples of different types of changes
 * 1) We make a visual change with JS or CSS (JS), the browser must recalculate the styles of the elements that were affected (Style). If you affected the layout, such as an elements geometry, width or height or position in relation to another element, then the browswer will have to check all of the other elements and reflow the page (Layout), all affected areas will need to repainted (Paint) and final painted elements will need to be composited (Composite).
 
 * 2) Change a paint only propery such as background image or text color or shadows. We make the change (JS), styles calculated (Style), don't do layout since geometry not affected, do paint and composite.
@@ -50,7 +50,7 @@
 
 * You are supposed to pick your battles, since their are tradeoffs to different changes you make.
  
-###RAIL or LIAR: Load, Idle, Animations, Response
+### RAIL or LIAR: Load, Idle, Animations, Response
 * 4 major areas of an app's lifecycle: **RAIL** (really LIAR if in order):
 **Load, Idle, Animations, Response**. However, most apps do multiple loads, so load is not always at the beginning, for example, with XHR, web sockets, etc.
 
@@ -75,13 +75,13 @@
 
     * Make sure the JS runs at the right time with requestAnimationFrame: 
 
-        - The browser has very little time to render the frame at 60 frames per second. So in that 10ms you have to do it all, which means the JavaScript portion should be kept at 3-4ms at most since their will be other work like style calculations, layer managment and compositing that will come afterwards. Imagine the browser is in the middle of doing style work and then in comes style work that needs attention. The browser has to deal with the JS that just came in before it can move to other tasks. That new JS will make the work for the frame to have to be redone, which could mean missing the frame. 
+- The browser has very little time to render the frame at 60 frames per second. So in that 10ms you have to do it all, which means the JavaScript portion should be kept at 3-4ms at most since their will be other work like style calculations, layer managment and compositing that will come afterwards. Imagine the browser is in the middle of doing style work and then in comes style work that needs attention. The browser has to deal with the JS that just came in before it can move to other tasks. That new JS will make the work for the frame to have to be redone, which could mean missing the frame. 
     
-        - requestAnimationFrame schedules JavaScript to run at the earliest possible moment in each frame. That gives the browser as much time as possible to run JS, then style, layout, paint, then composite.
+- requestAnimationFrame schedules JavaScript to run at the earliest possible moment in each frame. That gives the browser as much time as possible to run JS, then style, layout, paint, then composite.
     
-        - Older code on the web for animation uses setTimeout or setInterval because in the past that's all there was (jQuery still does). The problem with these is that the JS engine pays no attention to the rendering pipleline when scheduling these. Not a good fit for animations. 
+- Older code on the web for animation uses setTimeout or setInterval because in the past that's all there was (jQuery still does). The problem with these is that the JS engine pays no attention to the rendering pipleline when scheduling these. Not a good fit for animations. 
     
-        - Here's how you use it:
+- Here's how you use it:
         
             ```
            // Second: Fcn gets called, do your animation, and at the end of  //it, you schedule the next one. The browser takes care of when it //should run and how.
@@ -95,11 +95,11 @@
             requestAnimationFrame(animate);
             ```
 
-        - All browsers support rAF except IE9, where you can use polyfill.
+- All browsers support rAF except IE9, where you can use polyfill.
     
-    * Make sure the JS doesn't take too long to run with Web Workers:
+ * Make sure the JS doesn't take too long to run with Web Workers:
 
-        - Since everything for the frame has to share that 16ms timespan, JS has a portion of that. Its easy for JS to take a while to run, especially for frameworks and libraries, since they need time to do their work, such as handling views, callbacks or analyzing data. You can find out how long the JS takes to run in the Timeline, with JS Profiler turned on. Then hit record. Only use the profiler when you know you have a problem with long running JS. 
+- Since everything for the frame has to share that 16ms timespan, JS has a portion of that. Its easy for JS to take a while to run, especially for frameworks and libraries, since they need time to do their work, such as handling views, callbacks or analyzing data. You can find out how long the JS takes to run in the Timeline, with JS Profiler turned on. Then hit record. Only use the profiler when you know you have a problem with long running JS. 
     
         - Web Workers: These provide an interface for spawning scripts to run in the background. Normally web sites run in a single thread running on the operating system. WW allow you to run JS in a totally different scope than the main window and on a totally different operating system thread. Whatever is happening in the main thread won't be affected by the worker thread and the opposite is true.
     
@@ -230,7 +230,7 @@ For older browsers you have to use this hack:
 ```
 * In a production environment, you'll probably need both.
 
-##Udacity: Website Performance Optimization
+## Udacity: Website Performance Optimization
 * **Minify, compress and cache** HTML, CSS, JS. Remove unnecessary styles.
 
 * **Avoid render blocking CSS**: In order to paint the page, you have to have constructed the DOM and CSSOM trees, you don't want to paint an unstyled page. By default, the browser assume CSS is render blocking. To optimize this, you can scope styles to certain conditions by splitting the CSS into multiple files, like print styles into print.css by adding a media attribute `media='print'`, it will still download all of the files, but wouldn't block rendering on print styles. The same works for media queries, `media="orientation: landscape"`
@@ -242,7 +242,7 @@ For older browsers you have to use this hack:
     - Minimize use of render blocking resources (CSS): Use media queries on <link> to unblock rendering & inline CSS
     - Minimize use of parser blocking resouces (JS): defer JS execution and use async attribute on <script>
     
-* General buckets or themes: 
+### General buckets or themes: 
 1) Minimize bytes or critical bytes 
 2) Reduce critical resouces 
 3) Shorten critical rendering path length, best-case is 1, keep round-trips down.
